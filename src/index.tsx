@@ -10,17 +10,26 @@ import theme from "./app/MaterialTheme";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./css/index.css";
 
+/* GLOBAL INTEGRATIOINS: REDUX & MUI & ROUTER & SOCKET & CONTEXT & ReactQuery ...  */
 ReactDOM.render(
+  // 🛜VIRTUAL DOM
   <React.StrictMode>
+    {/* 🧔‍♂️PARENT REDUX - frontend uchun vaqtinchalik ma'lumotlar bunkeri */}
     <Provider store={store}>
+      {/* 🧔‍♂️PARENT MUI */}
       <ThemeProvider theme={theme}>
+        {/* Hamma browserlarda 1-chi o'rinda MUIni ustuvor qilish */}
         <CssBaseline />
+        {/* 🧔‍♂️PARENT ROUTER */}
         <Router>
+          {/* 🧒CHILD */}
           <App />
         </Router>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
+
+  // 🌏REAL DOM
   document.getElementById("root"),
 );
 
