@@ -4,13 +4,14 @@ import Basket from "./Basket";
 
 export default function OtherNavbar() {
   const authMember = null;
+
   return (
     <div className="other-navbar">
       <Container className="navbar-container">
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/burak.svg" />
+              <img className="brand-logo" src="/icons/bumarak.svg" />
             </NavLink>
           </Box>
           <Stack className="links">
@@ -41,8 +42,6 @@ export default function OtherNavbar() {
                 Help
               </NavLink>
             </Box>
-
-            {/* BASKET */}
             <Basket />
 
             {!authMember ? (
@@ -53,7 +52,7 @@ export default function OtherNavbar() {
               </Box>
             ) : (
               <img
-                className="user"
+                className="user-avatar"
                 src={"/icons/default-user.svg"}
                 aria-haspopup={"true"}
               />
