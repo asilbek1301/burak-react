@@ -9,6 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./app/MaterialTheme";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./css/index.css";
+import ContextProvider from "./app/context/ContextProvider";
 
 const container = document.getElementById("root")!; // 🌏REAL DOM
 const root = createRoot(container);
@@ -19,16 +20,18 @@ root.render(
   <React.StrictMode>
     {/* 🧔‍♂️PARENT REDUX - frontend uchun vaqtinchalik ma'lumotlar bunkeri */}
     <Provider store={store}>
-      {/* 🧔‍♂️PARENT MUI */}
-      <ThemeProvider theme={theme}>
-        {/* Hamma browserlarda 1-chi o'rinda MUIni ustuvor qilish */}
-        <CssBaseline />
-        {/* 🧔‍♂️PARENT ROUTER */}
-        <Router>
-          {/* 🧒CHILD */}
-          <App />
-        </Router>
-      </ThemeProvider>
+      <ContextProvider>
+        {/* 🧔‍♂️PARENT MUI */}
+        <ThemeProvider theme={theme}>
+          {/* Hamma browserlarda 1-chi o'rinda MUIni ustuvor qilish */}
+          <CssBaseline />
+          {/* 🧔‍♂️PARENT ROUTER */}
+          <Router>
+            {/* 🧒CHILD */}
+            <App />
+          </Router>
+        </ThemeProvider>
+      </ContextProvider>
     </Provider>
   </React.StrictMode>,
 );
