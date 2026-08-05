@@ -16,11 +16,6 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 
 interface HomeNavbarProps {
-  cartItems: CartItem[];
-  onAdd: (item: CartItem) => void;
-  onRemove: (item: CartItem) => void;
-  onDelete: (item: CartItem) => void;
-  onDeleteAll: () => void;
   setSignupOpen: (isOpen: boolean) => void;
   setLoginOpen: (isOpen: boolean) => void;
   handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
@@ -31,11 +26,6 @@ interface HomeNavbarProps {
 
 export default function HomeNavbar(props: HomeNavbarProps) {
   const {
-    cartItems,
-    onAdd,
-    onRemove,
-    onDelete,
-    onDeleteAll,
     setSignupOpen,
     setLoginOpen,
     handleLogoutClick,
@@ -85,13 +75,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
                 Help
               </NavLink>
             </Box>
-            <Basket
-              cartItems={cartItems}
-              onAdd={onAdd}
-              onRemove={onRemove}
-              onDelete={onDelete}
-              onDeleteAll={onDeleteAll}
-            />
+            <Basket />
 
             {!authMember ? (
               <Box>

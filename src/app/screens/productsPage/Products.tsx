@@ -20,6 +20,7 @@ import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
+import { useGlobals } from "../../hooks/useGlobals";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -29,12 +30,9 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
   products,
 }));
 
-interface ProductsProps {
-  onAdd: (item: CartItem) => void;
-}
-
-export default function Products(props: ProductsProps) {
-  const { onAdd } = props;
+export default function Products() {
+  const { BASKET } = useGlobals();
+  const { onAdd } = BASKET;
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(productsRetriever);
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
