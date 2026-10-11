@@ -8,8 +8,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./app/MaterialTheme";
 import { BrowserRouter as Router } from "react-router-dom";
-import "./css/index.css";
 import ContextProvider from "./app/context/ContextProvider";
+import { SocketProvider } from "./app/context/SocketContext";
+import "./css/index.css";
 
 const container = document.getElementById("root")!; // 🌏REAL DOM
 const root = createRoot(container);
@@ -21,16 +22,18 @@ root.render(
     {/* 🧔‍♂️PARENT REDUX - frontend uchun vaqtinchalik ma'lumotlar bunkeri */}
     <Provider store={store}>
       <ContextProvider>
-        {/* 🧔‍♂️PARENT MUI */}
-        <ThemeProvider theme={theme}>
-          {/* Hamma browserlarda 1-chi o'rinda MUIni ustuvor qilish */}
-          <CssBaseline />
-          {/* 🧔‍♂️PARENT ROUTER */}
-          <Router>
-            {/* 🧒CHILD */}
-            <App />
-          </Router>
-        </ThemeProvider>
+        <SocketProvider>
+          {/* 🧔‍♂️PARENT MUI */}
+          <ThemeProvider theme={theme}>
+            {/* Hamma browserlarda 1-chi o'rinda MUIni ustuvor qilish */}
+            <CssBaseline />
+            {/* 🧔‍♂️PARENT ROUTER */}
+            <Router>
+              {/* 🧒CHILD */}
+              <App />
+            </Router>
+          </ThemeProvider>
+        </SocketProvider>
       </ContextProvider>
     </Provider>
   </React.StrictMode>,
